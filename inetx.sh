@@ -274,7 +274,7 @@ getData() {
             KEY_FILE="/usr/local/etc/xray/${DOMAIN}.key"
         else
             resolve=`host ${DOMAIN} | awk '/has address/ { print $4 ; exit }'`
-            res=`echo -n ${resolve}`
+            res=`echo -n ${resolve} | grep ${IP}`
             if [[ -z "${res}" ]]; then
                 colorEcho ${BLUE}  "${DOMAIN} 解析结果：${resolve}"
                 colorEcho ${RED}  " 域名未解析到当前服务器IP(${IP})!"
